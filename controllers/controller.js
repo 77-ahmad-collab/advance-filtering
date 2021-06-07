@@ -13,12 +13,39 @@ const createBootcamp = async (req, res) => {
 
 const getBootcamp = async (req, res) => {
   try {
-    const result = await bootcamp.find({});
+    // console.log(req.query);
+    let reqquery = { ...req.query };
+    // console.log(reqquery);
+    const removal = ["sort"];
+    removal.map((val) => delete reqquery[val]);
+    // console.log(reqquery, "req query");
+    let strquery = JSON.stringify(reqquery);
+    strquery = strquery.replace(
+      /\b(gt|gte|lt|lte|in)\b/g,
+      (match) => `$${match}`
+    );
+    strquery = JSON.parse(strquery);
+    console.log(strquery);
+
+    let result = bootcamp.find(strquery);
+    if (req.query.sort) {
+      // console.log(req.query.sort);
+
+      const sortbyarr = req.query.sort.split(",");
+      const sortbystr = sortbyarr.join(" ");
+
+      console.log(sortbystr);
+      result = result.sort(sortbystr);
+    } else {
+      console.log("no sort");
+      result = result.sort({ price: 1 });
+    }
+    const fdata = await result;
     res.status(200).json({
-      data: result,
+      data: fdata,
     });
   } catch (error) {
-    res.status(400).send(err);
+    res.status(400).send(error);
   }
 };
 

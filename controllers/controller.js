@@ -25,19 +25,19 @@ const getBootcamp = async (req, res) => {
       (match) => `$${match}`
     );
     strquery = JSON.parse(strquery);
-    console.log(strquery);
+    // console.log(strquery);
 
     let result = bootcamp.find(strquery);
-    if (req.query.sort) {
+    if (req.query.sort == "-price") {
       // console.log(req.query.sort);
 
       const sortbyarr = req.query.sort.split(",");
       const sortbystr = sortbyarr.join(" ");
 
-      console.log(sortbystr);
-      result = result.sort(sortbystr);
+      console.log("sort max to lowest");
+      result = result.sort({ price: -1 });
     } else {
-      console.log("no sort");
+      console.log("no sort lowest to max");
       result = result.sort({ price: 1 });
     }
     const fdata = await result;

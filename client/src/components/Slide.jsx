@@ -73,7 +73,7 @@ const Slide = ({ range, setrange, fetchdata, setvalue, value }) => {
 
             <Slider
               min={0}
-              max={2000}
+              max={4000}
               className={classes.slide}
               valueLabelDisplay="auto"
               onChange={(e, newvalue) => {

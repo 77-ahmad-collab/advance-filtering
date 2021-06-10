@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import Card from "../components/Card";
 import Slide from "../components/Slide";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
+
 import axios from "axios";
 import "../index.css";
 import { useEffect } from "react";
 const Sort = () => {
-  const [range, setrange] = useState([0, 1200]);
+  const [range, setrange] = useState([0, 4000]);
   const [loading, setloading] = useState(false);
   const [value, setValueOf] = useState("-price");
   const [bootcamps, setbootcamps] = useState([]);
-  let filter;
+  // let filter;
   const filterboot = (data) => {
     // console.log(data.data);
     const filterbootcamp = data.filter(

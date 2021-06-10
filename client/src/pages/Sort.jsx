@@ -55,7 +55,11 @@ const Sort = () => {
         setvalue={setValueOf}
         value={value}
       />
-      {loading ? <h2>Loading....</h2> : <Card bootcamps={bootcamps} />}
+      {loading ? (
+        <h2 className="h3">Loading....</h2>
+      ) : (
+        <Card bootcamps={bootcamps} />
+      )}
     </div>
   );
 };

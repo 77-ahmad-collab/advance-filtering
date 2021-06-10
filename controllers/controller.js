@@ -34,10 +34,10 @@ const getBootcamp = async (req, res) => {
       const sortbyarr = req.query.sort.split(",");
       const sortbystr = sortbyarr.join(" ");
 
-      console.log("sort max to lowest");
+      // console.log("sort max to lowest");
       result = result.sort({ price: -1 });
     } else {
-      console.log("no sort lowest to max");
+      // console.log("no sort lowest to max");
       result = result.sort({ price: 1 });
     }
     const fdata = await result;

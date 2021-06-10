@@ -5,24 +5,38 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-import { TextField, Box, Paper } from "@material-ui/core";
+import { TextField, Box, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles((theme) => ({
-  root: {
-    height: "20vh",
-  },
+  root: {},
   slide: {
-    margin: "35px 10px  0px 0px",
+    margin: "5px 10px  0px 0px",
+    // border: "3px solid red",
+    width: "88%",
   },
   control: {
     margin: theme.spacing(1),
   },
-  textf: {},
+  textf: {
+    marginBottom: "15px",
+  },
+  heading: {
+    alignSelf: "flex-start",
+    paddingLeft: "10px",
+    paddingTop: "5px",
+  },
+  heading2: {
+    alignSelf: "flex-start",
+    paddingLeft: "25px",
+  },
   bod: {
-    padding: "  0px 2px",
     width: "80%",
     margin: "15px auto",
+  },
+  sort: {
+    // border: "3px solid red",
+    marginLeft: "40px",
   },
   border1: {
     border: "2px solid red",
@@ -46,13 +60,17 @@ const Slide = ({ range, setrange, fetchdata, setvalue, value }) => {
         <Grid container className={classes.root}>
           <Grid
             item
+            xs={12}
             sm={7}
             direction="column"
             justify="flex-start"
             container
             alignItems="center"
-            className={classes.bod}
           >
+            <Typography variant="h6" className={classes.heading}>
+              Filters
+            </Typography>
+
             <Slider
               min={0}
               max={2000}
@@ -67,6 +85,7 @@ const Slide = ({ range, setrange, fetchdata, setvalue, value }) => {
               }}
               value={range}
             />
+
             <Grid
               item
               container
@@ -105,17 +124,22 @@ const Slide = ({ range, setrange, fetchdata, setvalue, value }) => {
               />
             </Grid>
           </Grid>
+
           <Grid
             item
-            sm={5}
+            sm={4}
             direction="column"
             container
             justify="center"
-            alignItems="center"
+            alignItems="flex-start"
           >
             <FormControl component="fieldset">
-              <FormLabel component="legend">Filter</FormLabel>
+              {/* <FormLabel component="legend">Sort By</FormLabel> */}
+              <Typography variant="h6" className={classes.heading2}>
+                Sort By
+              </Typography>
               <RadioGroup
+                className={classes.sort}
                 aria-label="gender"
                 name="gender1"
                 value={value}
@@ -124,12 +148,12 @@ const Slide = ({ range, setrange, fetchdata, setvalue, value }) => {
                 <FormControlLabel
                   value="-price"
                   control={<Radio />}
-                  label="max-to-lowest"
+                  label="Price: Highest-Lowest"
                 />
                 <FormControlLabel
                   value="lowest to max"
                   control={<Radio />}
-                  label="lowest to max"
+                  label="Price: Lowest-Highest"
                 />
               </RadioGroup>
             </FormControl>

@@ -21,18 +21,19 @@ const Sort = () => {
   };
   const fetchdata = async () => {
     setloading(true);
+    // console.log(value);
     await axios
       .get(
         `/api/v1/bootcamps/?price[gt]=${range[0]}&&price[lte]=${range[1]}&&sort=${value}`
       )
       .then((res) => {
-        console.log(res);
+        // console.log(res);
 
         filterboot(res.data.data);
         setloading(false);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         setloading(false);
       });
   };

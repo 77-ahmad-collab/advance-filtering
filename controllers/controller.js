@@ -25,7 +25,7 @@ const getBootcamp = async (req, res) => {
       (match) => `$${match}`
     );
     strquery = JSON.parse(strquery);
-    // console.log(strquery);
+    console.log(strquery);
 
     let result = bootcamp.find(strquery);
     if (req.query.sort == "-price") {

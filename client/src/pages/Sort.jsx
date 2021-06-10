@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Card from "../components/Card";
 import Slide from "../components/Slide";
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import axios from "axios";
+import "../index.css";
 import { useEffect } from "react";
 const Sort = () => {
   const [range, setrange] = useState([0, 1200]);
@@ -38,8 +40,12 @@ const Sort = () => {
     fetchdata();
   }, [value]);
   return (
-    <div>
-      this is the main pga eof web
+    <div className="main_body">
+      <AppBar position="static" elevation={0}>
+        <Toolbar>
+          <Typography variant="h4">Bootcamps</Typography>
+        </Toolbar>
+      </AppBar>
       <Slide
         setrange={setrange}
         range={range}
